@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public InputActionReference inputAction;
     public float playerAcceleration;
     public GameObject gameOverScreen;
+    public AudioSource hitAudio;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
+        	hitAudio.Play();
             gameOverScreen.SetActive(true);
             gameObject.SetActive(false);
         }
