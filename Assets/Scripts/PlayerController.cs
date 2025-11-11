@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,5 +20,13 @@ public class PlayerController : MonoBehaviour
         var input = inputAction.action.ReadValue<Vector2>();
         input.y = 0f;
         playerRigidbody.AddForce(input * playerAcceleration, ForceMode.Acceleration);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
