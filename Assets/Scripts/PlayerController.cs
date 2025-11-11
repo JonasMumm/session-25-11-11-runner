@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody playerRigidbody;
     public InputActionReference inputAction;
     public float playerAcceleration;
+    public GameObject gameOverScreen;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            SceneManager.LoadScene(0);
+            gameOverScreen.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }
